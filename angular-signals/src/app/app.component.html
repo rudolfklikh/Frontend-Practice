@@ -1,0 +1,6 @@
+<div class="counter-wrapper">Counter equals to {{ counter() }}</div>
+<div class="counter-wrapper">Derived counter equals to {{ derivedCounter() }}</div>
+<div class="course-wrapper">Course:  {{ course() | json }}</div>
+<div class="corses-wrapper">Courses: {{ courses().join(', ') }}</div>
+
+<button (click)="increment()">Increment counter</button>
