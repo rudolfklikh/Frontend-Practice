@@ -1,7 +1,8 @@
-import { Component, EffectRef, computed, effect, signal } from '@angular/core';
+import { Component, EffectRef, computed, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { CounterService } from './counter.service';
+import { FlightBookingStore } from './store/app.store';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,15 @@ import { CounterService } from './counter.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+  private store = inject(FlightBookingStore);
+  
   counter = this.counterService.counter;
+
+  basket = this.store.basket;
+  flights = this.store.flights;
+  selected = this.store.selected;
+  criteria = this.store.criteria;
+
   course = signal({
     id: 1,
     title: 'Angular Signals'
@@ -31,7 +40,6 @@ export class AppComponent {
   });
 
   constructor(private counterService: CounterService) {
-
   }
 
   increment() {
