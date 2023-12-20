@@ -1,0 +1,18 @@
+<ul>
+  @defer(prefetch on viewport) {
+  @for (product of products(); track $index; let count = $count) {
+  <li>
+    <app-product [product]="product"></app-product>
+  </li>
+  }
+  }
+  @placeholder () {
+  <h2>Placeholder products......</h2>
+  }
+  @loading (minimum 3s; after 0.5s) {
+  Loading products.....
+  }
+  @error {
+    An error occurred.
+  }
+</ul>
