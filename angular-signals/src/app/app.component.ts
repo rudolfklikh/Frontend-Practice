@@ -1,4 +1,4 @@
-import { Component, EffectRef, computed, effect, inject, signal } from '@angular/core';
+import { Component, EffectRef, Inject, Injector, computed, effect, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { CounterService } from './counter.service';
@@ -39,7 +39,14 @@ export class AppComponent {
     return  filteredCourses?.length as number + counter + 1;
   });
 
-  constructor(private counterService: CounterService) {
+  constructor(private counterService: CounterService, private injector: Injector) {
+    this.initEffects();
+  }
+
+
+  initEffects() {
+
+    
   }
 
   increment() {
